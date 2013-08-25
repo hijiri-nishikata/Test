@@ -35,15 +35,15 @@ void add(T d)
     virtualPtr->next=NULL;
     
     /* add element */
-    List* searchptr=&root;//First element
+    List* searchPtr=&root;//First element
     List* xptr;
     
-    for(xptr=searchptr->next; xptr != NULL; xptr=xptr->next)
+    for(xptr=searchPtr->next; xptr != NULL; xptr=xptr->next)
     {
-        searchptr=xptr;
+        searchPtr=xptr;
     }
     
-    searchptr->next=virtualPtr;
+    searchPtr->next=virtualPtr;
 }
 
 void display()
@@ -58,23 +58,24 @@ void display()
 
 void deleteList(T d)
 {
-    List* searchptr=&root;
+    List* searchPtr=&root;
     List* deleteData;
-    for(deleteData=searchptr->next; deleteData != NULL; deleteData=deleteData->next)
+    for(deleteData=searchPtr->next; deleteData != NULL; deleteData=deleteData->next)
     {
         if(deleteData->data == d)
         {
             if(deleteData->next != NULL)
             {
-                searchptr->next=deleteData->next;
+                searchPtr->next=deleteData->next;
                 delete deleteData;
                 return;
             }
             
-            searchptr->next=NULL;
+            searchPtr->next=NULL;
             delete deleteData;
             return;
         }
+        searchPtr=searchPtr->next;
     }
     cout << "Not found." << endl;
 }
@@ -112,18 +113,23 @@ bool search(T x, List* searchPtr)
 
 int main (int argc, char *argv[])
 {
+    cout << "\n" << endl;
     constructor();
     add(10);
     add(20);
     add(30);
+    add(40);
+    add(50);
     display();
+    cout << "\n" << endl;
     
-    cout << endl;
-    deleteList(10);
+    deleteList(30);
     display();
+    cout << "\n" << endl;
     
-    cout << endl;
+    cout << "Search 20" << endl;
     searchList(20);
+    cout << "Search 30" << endl;
+    searchList(30);
     return 0;
 }
-
