@@ -14,7 +14,7 @@ all: $(PROGRAM)
 $(PROGRAM): $(OBJS)
 	$(CXX) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 
-test.o: test.cpp list.h
+linkedlist.o: linkedlist.cpp list.h
 list.o: list.cpp list.h
 
 
