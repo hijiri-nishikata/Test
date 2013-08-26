@@ -1,20 +1,23 @@
+#
+#Makefile
+#
+#This is declaration of variable number.
 CXX=g++
-LIBS=
-LIBDIR=-L /opt/local/lib
-INCDIR=-I/opt/local/include
 CFLAGS=-Wall
-TARGETS=test
+PROGRAM=test
 SRCS=test.cpp
 OBJS=$(SRCS:.cpp=.o)
 
-all: $(TARGETS) $(OBJS)
+#
+#This is processing
+all: $(PROGRAM)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(INCDIR) $(LIBDIR) $(LIBS)
+$(PROGRAM): $(OBJS)
+	$(CXX) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 
 .cpp.o:
-	$(CXX) $(CFLAGS) -c $< $(INCDIR) $(LIBDIR) $(LIB)
+	$(CXX) $(CFLAGS) -c $< 
 
 .PHONY: clean
 clean:
-	$(RM) *~ $(TARGETS) $(OBJS)
+	$(RM) *~ $(PROGRAM) $(OBJS)
