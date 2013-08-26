@@ -6,6 +6,7 @@ using namespace std;
 List root;
 void constructor()
 {
+	int a;
     root.next=NULL;
     root.data=0;
 }
